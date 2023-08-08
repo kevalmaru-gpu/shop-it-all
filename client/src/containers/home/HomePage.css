@@ -1,0 +1,9 @@
+.disable{
+    display: none;
+}
+
+.enable{
+    position: absolute;
+    object-fit: contain;
+    height: 100%;
+}

@@ -25,7 +25,6 @@ function Cart() {
         const response = await productContext.buy_products(product_ids)
         if (response.status === 'success') setItemList([])
     }
-    
     return (
         <div className='py-5 pl-4 w-full lg:w-[70%] h-body flex flex-row font-work_sans'>
             <div className='w-full lg:w-[60%]'>
@@ -33,7 +32,7 @@ function Cart() {
                 <div className='my-5 flex flex-col items-start justify-start'>
                 {
                     itemsList.map(ele => {
-                        if (ele) return <ItemSlot data={ele} productContext={productContext}/>
+                        if (ele && productContext.cartItems.includes(ele._id)) return <ItemSlot data={ele} productContext={productContext}/>
                     })
                 }
                 </div>

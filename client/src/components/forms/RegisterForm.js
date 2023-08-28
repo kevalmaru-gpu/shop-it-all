@@ -161,7 +161,7 @@ function RegisterForm() {
                 await userContext.registerAddress(data)
                 authContext.updateIsLoggedIn(true)
                 // ! RISKY
-                window.location.pathname = '/'
+                window.location.pathname = '/login'
             }
     }
 

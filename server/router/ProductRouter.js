@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { _add_product, _get_product_from_main_category, _get_product_from_sub_category, _get_product_from_key_word, _add_to_cart, _get_from_cart, _cart_count_route, _get_product_by_id, _buy_products } = require('../controller/ProductController')
+const { _get_products_by_name, _add_product, _get_product_from_main_category, _get_product_from_sub_category, _get_product_from_key_word, _add_to_cart, _get_from_cart, _cart_count_route, _get_product_by_id, _buy_products, _remove_from_cart } = require('../controller/ProductController')
 
 const ProductRouter = Router()
 
@@ -12,5 +12,7 @@ ProductRouter.post('/get_from_cart', _get_from_cart)
 ProductRouter.post('/update_cart_count', _cart_count_route)
 ProductRouter.post('/get_product_by_id', _get_product_by_id)
 ProductRouter.post('/buy_products', _buy_products)
+ProductRouter.post('/remove_from_cart', _remove_from_cart)
+ProductRouter.post('/get_by_name', _get_products_by_name)
 
 module.exports = ProductRouter

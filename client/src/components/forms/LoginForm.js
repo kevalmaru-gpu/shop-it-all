@@ -50,7 +50,7 @@ function LoginForm() {
     
     const loginDesign = () => {
         return (
-            <form onSubmit={loginHandler} className='w-full lg:w-1/2 h-[70%] flex flex-col justify-center items-center rounded-md shadow-xl font-work_sans bg-slate-200'>
+            <form onSubmit={loginHandler} className='w-full lg:w-1/2 h-[90%] flex flex-col justify-center items-center rounded-md shadow-xl font-work_sans bg-slate-200'>
                 <div className='my-8 flex items-center flex-col'>
                     <div className='font-bold text-xl lg:text-3xl'>Hello Again!</div>
                     <div className='w-[90%] md:w-[9rem] text-center text-sm lg:text-xl'>Welcome back you've been missed!</div>
@@ -62,7 +62,7 @@ function LoginForm() {
 
                 <button disabled={!isFormValid} type='submit' className='disabled:bg-gray-300 w-[70%] my-6 p-2 rounded-lg text-lg bg-blue-300 hover:bg-blue-200'>Sign In</button>
 
-                <h1 className='h-[30%] flex items-end'>Not a member? <a href='/register' className='text-blue-400'> &nbsp; Register now</a></h1>
+                <h1 className='my-3 h-[30%] flex items-end'>Not a member? <a href='/register' className='text-blue-400'> &nbsp; Register now</a></h1>
             </form>
         )
     }

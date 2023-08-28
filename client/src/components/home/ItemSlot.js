@@ -3,6 +3,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import Ratings from '../item/Ratings'
 import { ProductContext } from '../../store/product-context'
 import { useNavigate } from 'react-router-dom'
+import { AiOutlineCheck } from 'react-icons/ai'
 
 function ItemSlot(props) {
     const {name, rating, price, image} = props.data 
@@ -23,8 +24,8 @@ function ItemSlot(props) {
 
     return (
         <div className='mr-[4rem] my-[1.5rem] w-[12rem] relative'>
-            <div onClick={viewProductHandler} className='cursor-pointer w-full h-[12rem] md:w-[15rem] md:h-[15rem] bg-slate-300 bg-opacity-60 relative flex justify-center items-center'>
-                <img src={image} alt='Image not available' className='absolute inset-0 h-full mix-blend-multiply'></img>
+            <div onClick={viewProductHandler} className='cursor-pointer w-full h-[12rem] md:w-[15rem] md:h-[15rem] bg-slate-100 bg-opacity-60 relative flex justify-center items-center'>
+                <img src={image} alt='Image not available' className='absolute object-contain h-full mix-blend-multiply'></img>
             </div>
             <div className='absolute w-fit h-fit inset-0 top-[.5rem] left-[85%] md:left-[110%] text-sm lg:text-lg hover:' 
             onMouseEnter={() => {
@@ -36,7 +37,7 @@ function ItemSlot(props) {
             >
                 { heartIcon }
             </div>
-            <div className='w-[12rem    ] md:w-[14.6rem] font-bold flex items-center justify-between'>
+            <div className='w-[12rem] md:w-[14.6rem] font-bold flex items-center justify-between'>
                 <h1  className='text-vsm md:text-sm'>{name.substring(0,30)}</h1>
                 <h1 className='text-sm '>{price}</h1>
             </div>
@@ -45,7 +46,9 @@ function ItemSlot(props) {
                 <Ratings rating={parseFloat(rating)} totalUsers={500}/>
             }
             </div>
-            <button onClick={() => productContext.addProductToCart(props.data._id)} className='text-vsm md:text-sm p-1 md:p-2 rounded-full border-[1px] border-black hover:bg-gray-500 hover:text-white hover:border-white transition-all duration-500 '>Add to Cart</button>
+            <button onClick={() => productContext.addProductToCart(props.data._id)} className='flex justify-center items-center h-[2rem] w-[7rem] text-vsm md:text-sm p-1 md:p-2 rounded-full border-[1px] border-black hover:bg-gray-500 hover:text-white hover:border-white transition-all duration-500 '>{
+            productContext.cartItems.includes(props.data._id) ? <AiOutlineCheck/> : <>Add to Cart</>
+            }</button>
         </div>
     )
 }

@@ -17,7 +17,7 @@ app.use('/user', UserRouter)
 app.use('/service', ServiceRouter)
 app.use('/product', ProductRouter)
 
-app.listen(5000, (err) => {
+app.listen(8000, (err) => {
     if (err) console.error(`[-] cannot start server\n${err}`)
     console.log('[+] listening to PORT 5000')
 })

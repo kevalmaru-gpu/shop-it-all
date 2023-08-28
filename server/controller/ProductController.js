@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 const { Types } = require('mongoose')
 
 async function _add_product(req, res){
-    const data = req.body
     var ErrorLog = ''
     req.body.forEach(e => {
         console.log(e)  
@@ -19,6 +18,18 @@ async function _add_product(req, res){
         })
     })
     res.status(200).json({status:'success', message: ErrorLog})
+}
+
+async function _get_products_by_name(req, res){
+    const text = req.body.text
+
+    ProductModel.find({"name": {$regex: text, $options: 'i'}})
+    .then(data => {
+        res.json(data)
+    })
+    .catch(err => {
+        res.status(400).json(err)
+    })
 }
 
 async function _get_product_by_id(req, res){
@@ -54,7 +65,7 @@ async function _get_product_from_main_category(req, res){
     const { main_category, token } = req.body
 
     jwt.verify(token, process.env.TOKEN_PRIVATE_KEY, async function (err, decode){
-        try{
+        try{    
             if (err) res.status(400).json({status:'failed', message:err})
             await ProductModel.find({ main_category: main_category })
             .then(async (response, err) => {
@@ -118,6 +129,28 @@ async function _add_to_cart(req, res){
                     res.status(201).json({ status: 'success', message: response })
                 })
                 .catch(err => res.status(400).json({ status: 'failed', message: err }))
+            })
+        }
+        catch(err){
+            res.status(400).json({ status: 'failed', message: err })
+        }
+    })
+}
+
+async function _remove_from_cart(req, res){
+    const { token, product_id } = req.body
+    await jwt.verify(token, process.env.TOKEN_PRIVATE_KEY, async function(err, decode){
+        try{
+            if (err) res.status(400).json({ status: 'failed', message: err })
+            if (decode == undefined) throw new Error('token invalid')
+
+            const data = { user_id: decode.data._id, product_id: product_id }
+
+            await CartModel.deleteOne(data)
+            .then(async (response, err) => {
+                console.log(response)
+                if (err || response == null) throw new Error('item doesnt exists in cart')
+                res.status(200).json('Item removed')
             })
         }
         catch(err){
@@ -238,4 +271,4 @@ async function _buy_products(req, res){
     })
 }
 
-module.exports = { _add_product, _get_product_from_main_category, _get_product_from_sub_category, _get_product_from_key_word, _add_to_cart, _get_from_cart, _cart_count_route, _get_product_by_id, _buy_products }
+module.exports = { _get_products_by_name, _add_product, _get_product_from_main_category, _get_product_from_sub_category, _get_product_from_key_word, _add_to_cart, _get_from_cart, _cart_count_route, _get_product_by_id, _buy_products, _remove_from_cart }

@@ -10,6 +10,7 @@ import Login from './containers/login/Login';
 import Register from './containers/register/Register';
 import Cart from './containers/cart/Cart';
 import Profile from './containers/account/Profile'
+import Search from './containers/search/Search'
 
 import { AuthContext } from './store/auth-context';
 import MainWraper from './ui/MainWraper';
@@ -49,6 +50,7 @@ function App() {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/search' element={<Search/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

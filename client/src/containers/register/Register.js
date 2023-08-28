@@ -8,7 +8,7 @@ function Register() {
                 <RegisterForm/>
             </div>
             <div className='w-1/2 h-full hidden lg:flex items-center justify-center'>
-                <img src={'signin/vector_1.jpg'}></img>
+                <img src={'signin/login.png'}></img>
             </div>
         </div>
     )

@@ -23,7 +23,7 @@ const UserProvider = ({children}) => {
             text: `Thank you for choosing ShopIt\nYour OTP is ${data.otp}`
         }
 
-        await fetch('http://localhost:5000/service/send_email', {
+        await fetch('http://localhost:8000/service/send_email', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(mailData)
@@ -31,7 +31,7 @@ const UserProvider = ({children}) => {
     }
 
     const registerUser = async (data) => {
-        const response = await fetch('http://localhost:5000/user/register/info', {
+        const response = await fetch('http://localhost:8000/user/register/info', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
@@ -43,7 +43,7 @@ const UserProvider = ({children}) => {
     }
 
     const registerAddress = async (data) => {
-        const response = await fetch('http://localhost:5000/user/register/address', {
+        const response = await fetch('http://localhost:8000/user/register/address', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
@@ -60,7 +60,7 @@ const UserProvider = ({children}) => {
             password: password
         }
 
-        const response = await fetch('http://localhost:5000/user/login', {
+        const response = await fetch('http://localhost:8000/user/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data) 
@@ -88,7 +88,7 @@ const UserProvider = ({children}) => {
             new_fullname: new_fullname
         }
 
-        const response = await fetch('http://localhost:5000/user/update/info', {
+        const response = await fetch('http://localhost:8000/user/update/info', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
@@ -116,7 +116,7 @@ const UserProvider = ({children}) => {
             new_password
         }
 
-        const response = await fetch('http://localhost:5000/user/update/password', {
+        const response = await fetch('http://localhost:8000/user/update/password', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
@@ -138,7 +138,7 @@ const UserProvider = ({children}) => {
             locality
         }
 
-        const response = await fetch('http://localhost:5000/user/update/address', {
+        const response = await fetch('http://localhost:8000/user/update/address', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)

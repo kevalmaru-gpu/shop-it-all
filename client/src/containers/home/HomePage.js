@@ -11,13 +11,14 @@ import Categories from '../../components/home/Categories';
 import { ProductContext } from '../../store/product-context';
 import secureLocalStorage from 'react-secure-storage';
 
+
 const ItemRow = React.lazy(() => import('./ItemRow'));
 
 
 function HomePage() {
   const posters = ['posters/sale1.png', 'posters/sale2.png']
   const [main_categories, setMainCategories] = useState([])
-  const displayCategories = ["sports & fitness", "home & kitchen", "tv, audio & cameras"]
+  const displayCategories = ["furniture", "books", "cloths", "sneakers", "tech"]
   const [displayItems, setDisplayItems] = useState([])
   const productContext = useContext(ProductContext)
 
@@ -43,6 +44,7 @@ function HomePage() {
 
   return (
     <div className='h-body w-[99%] lg:w-[70%] flex flex-col  justify-start items-center'>
+        
       <div className='w-full h-[80%]'>
         <Carousel>
         {
@@ -53,7 +55,7 @@ function HomePage() {
         </Carousel>
         <Categories />
         
-        {
+          {
           displayItems.length > 0
           &&
           displayItems.map(ele => {

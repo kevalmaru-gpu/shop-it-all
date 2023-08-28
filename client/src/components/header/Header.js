@@ -4,7 +4,6 @@ import Account from './Account'
 import SearchProduct from './SearchProduct'
 import Logo from './Logo'
 import Cart from './Cart'
- 
 
 function Header() {
   return (

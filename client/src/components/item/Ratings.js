@@ -6,7 +6,7 @@ function Ratings(props) {
     if (rating > 5) rating = 5
 
     return (
-        <div className='flex flex-row text-sm md:text-lg my-2 items-center'>
+        <div className='flex flex-row text-sm md:text-lg my-2 items-center font-light'>
             {
                 [...Array(Math.floor(rating))].map((x, i) => {
                     return <MdStar key={i}/>

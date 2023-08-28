@@ -22,7 +22,11 @@ async function _add_product(req, res){
 
 async function _get_products_by_name(req, res){
     const text = req.body.text
-
+    if (text === "" || text == null){
+        res.status(200).json([])
+        return
+    }
+    
     ProductModel.find({"name": {$regex: text, $options: 'i'}})
     .then(data => {
         res.json(data)

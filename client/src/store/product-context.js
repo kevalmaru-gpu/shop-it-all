@@ -37,7 +37,7 @@ const ProductProvider = (props) => {
             body: JSON.stringify({text: searchString})
         })
         .then(res => res.json())
-        console.log(response)
+
         return response
     }
     

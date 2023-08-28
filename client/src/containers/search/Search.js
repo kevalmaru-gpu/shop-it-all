@@ -14,18 +14,17 @@ function Search() {
         }
         
         getData()
-        console.log(productsData)
     }, [productContext.searchString])
 
 
     return (
-        <div className='h-body'>
+        <div className='h-body w-full lg:w-[70%]'>
         {
             productsData == null ? 
-            <h1>DATA NOT FOUND</h1> :
+            <div className='w-full h-full flex justify-center items-center'><h1>DATA NOT FOUND</h1> </div>:
 
             productsData.map((ele, index) => {
-                
+                return <ItemSlot data={ele} key={index}/>
             })
         }
         </div>

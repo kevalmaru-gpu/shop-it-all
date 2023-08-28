@@ -1,7 +1,31 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+  
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+}
 
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border-radius: 30px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #000;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #7c7c7c;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
